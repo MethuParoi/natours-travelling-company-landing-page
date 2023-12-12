@@ -1,0 +1,52 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+
+  /* inherit from decleared value in body */
+  box-sizing: inherit;
+}
+
+// ORDER OF RESPONSIVENESS: Base + typography > general layout + grid > components
+
+html {
+  font-size: 62.5%;
+  /* 62.5% of default 16px is 10px, it provides more flexibility*/
+
+  //always put larger media query before smaller
+
+  @include respond(big-desktop) {
+    /*1800px*/
+    font-size: 75%; //1rem = 12px
+  }
+
+  @include respond(tab-land) {
+    /*1200px*/
+    font-size: 56.25%; //1rem = 9px
+  }
+
+  @include respond(tab-port) {
+    /*900px*/
+    font-size: 50%; //1rem = 8px
+  }
+
+  @include respond(phone) {
+    /*600px*/
+    font-size: 43.75%; //1rem = 7px
+  }
+}
+
+body {
+  box-sizing: border-box; /*declearing box-sizing */
+  padding: 3rem;
+
+  @include respond(tab-port) {
+    padding: 0rem;
+  }
+}
+
+::selection {
+  background-color: $color-primary-light;
+  color: $color-white;
+}
